@@ -46,11 +46,43 @@
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 
-    <footer>
-        <div class="kontakt"><p>@Michaelka 2022</p></div>
-    </footer>
+    
 </main>
 
+<footer>
+        <div class="kontakt"><p>@Michaelka 2022</p></div>
+</footer>
 
+
+<div id="mouse-circle" class="circle"></div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        let mousePosX = 0,
+            mousePosY = 0,
+            mouseCircle = document.getElementById('circle');
+
+        document.onmousemove = (e) => {
+            mousePosX = e.pageX;
+            mousePosY = e.pageY;
+        }
+
+        let delay = 5,
+            revisedMousePosX = 0,
+            revisedMousePosY = 0;
+
+        function delayMouseFollow() {
+            requestAnimationFrame(delayMouseFollow);
+
+            revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
+            revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
+
+            mouseCircle.style.top = revisedMousePosY + 'px';
+            mouseCircle.style.left = revisedMousePosX + 'px';
+        }
+        delayMouseFollow();
+    });
+</script>
 </body>
 </html>
